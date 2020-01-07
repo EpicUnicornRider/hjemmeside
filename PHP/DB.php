@@ -1,7 +1,9 @@
 <?php
-    include_once('AlleTilmeldte.php');
+    //include_once('AlleTilmeldte.php');
 
 	class DB {
+        
+        /*
         // Attributes
         private $host = 'skp-dp.sde.dk';
         private $user = 'xolp37.skp-dp';
@@ -24,6 +26,20 @@
             }
         }
         
+        */
+        
+        private $db_connection;
+		
+		function __construct(){
+			$this->db_connection = mysqli_connect("skp-dp.sde.dk", "xolp37.skp-dp", "3ypk52pq", "xolp37_skp_dp_sde_dk") or die(mysqli_error());
+			mysqli_set_charset($this->db_connection,"utf8");
+		}
+        
+        public function getDb() {
+			return $this->db_connection;
+		}
+        
+        /*
         function getAllUsers(){
             $users = array();
 
@@ -37,6 +53,7 @@
             }
 
             return $users;
-        }   
+        }
+        */
     }
 ?>

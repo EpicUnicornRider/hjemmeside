@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="da">
+	<head>
+		<title>Alle tilmeldt</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link href="CSS/CSS.css" rel="stylesheet" type="text/css">
+	</head>
+	<body onload="show_bruger()">
+		<!-- Navigation Bar -->
+			<nav class="navbar navbar-expand-lg navbar-light" >
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse grey" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto ">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Tilmeld</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="Alletilmeldt.html">Alle tilmeldt</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Graf.html">Graf</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+        
+        <script>
+            function show_bruger(){
+                $.get("PHP/AllTilmeldte.php", function(data){
+                    var dat = JSON.parse(data);
+                    $.each(dat, function(key, value){
+                        $(".list1").append("<p>" + value.name +"</p>");
+                    });
+                    $.each(dat, function(key, value){
+                        $(".list2").append("<p>" + value.email +"</p>");
+                    });
+                    $.each(dat, function(key, value){
+                        $(".list3").append("<p>" + value.age +"</p>");
+                    });
+                    $.each(dat, function(key, value){
+                        $(".list4").append("<p>" + value.shoesize +"</p>");
+                    });
+                })
+            }
+        </script>
+        
+        <div class="Site">
+            <div class="clearfix">
+                <div class="flex-item">
+                    <p>Navn</p>
+                    <div class="list1"></div>
+                </div>
+                <div class="flex-item"> 
+                    <p>Email</p>
+                    <div class="list2"></div>
+                </div>
+                <div class="flex-item">
+                    <p>alder</p>
+                    <div class="list3"></div>
+                </div>
+                <div class="flex-item">
+                    <p>skostørrelse</p>
+                    <div class="list4"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script
+  			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"></script>
+        
+    </body>
+</html>
