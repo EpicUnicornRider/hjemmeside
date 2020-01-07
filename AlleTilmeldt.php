@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="da">
+	<head>
+		<title>Alle tilmeldt</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<link href="CSS/CSS.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!-- Navigation Bar -->
+			<nav class="navbar navbar-expand-lg navbar-light" >
+			<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse grey" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto ">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Tilmeld</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="Alletilmeldt.html">Alle tilmeldt</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="Graf.html">Graf</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+        
+            <?php
+                include('PHP/DB.php');
+        
+                $DB = new DB();
+        
+                $users = $DB->getAllUsers();
+
+                $yeet = json_encode($users);
+                
+                echo $yeet;
+            ?>
+        
+    </body>
+</html>
